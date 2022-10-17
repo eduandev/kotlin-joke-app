@@ -8,15 +8,12 @@ import edu.and.jokeapp.view.HomeFragment
 
 class HomePresenter(
     private val view: HomeFragment,
-    private val dataSource: CategoryRemoteDataSource) : ListCategoryCallBack {
+    private val dataSource: CategoryRemoteDataSource = CategoryRemoteDataSource()
+) : ListCategoryCallBack {
 
     fun findAllCategories() {
         view.showProgress()
         dataSource.findAllCategories(this)
-    }
-
-    override fun onError(message: String) {
-        view.showFailure(message)
     }
 
     override fun onSuccess(response: List<String>) {
@@ -34,6 +31,10 @@ class HomePresenter(
             Category(s, Color.HSVToColor(hsv).toLong())
         }
         view.showCategories(categories)
+    }
+
+    override fun onError(message: String) {
+        view.showFailure(message)
     }
 
     override fun onComplete() {

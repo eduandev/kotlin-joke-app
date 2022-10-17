@@ -1,4 +1,4 @@
-package edu.and.jokeapp
+package edu.and.jokeapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import edu.and.jokeapp.R
 
 class MainActivity : AppCompatActivity() {
 

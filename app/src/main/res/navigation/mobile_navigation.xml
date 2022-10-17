@@ -22,13 +22,13 @@
 
     <fragment
         android:id="@+id/nav_joker_day"
-        android:name="edu.and.jokeapp.JokeDayFragment"
+        android:name="edu.and.jokeapp.view.JokeDayFragment"
         android:label="@string/menu_joker_day"
         tools:layout="@layout/fragment_joke_day"/>
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="edu.and.jokeapp.AboutFragment"
+        android:name="edu.and.jokeapp.view.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about"/>
 

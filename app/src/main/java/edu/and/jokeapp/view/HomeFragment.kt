@@ -41,12 +41,16 @@ class HomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_main)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        presenter.findAllCategories()
+        if(adapter.itemCount == 0) {presenter.findAllCategories()}
 
         recyclerView.adapter = adapter
         
         adapter.setOnItemClickListener { item, view ->
-            findNavController().navigate(R.id.action_nav_home_to_nav_joke)
+            val bundle = Bundle()
+            val categoryName = (item as CategoryItem).category.name
+            bundle.putString(JokeFragment.CATEGORY_KEY, categoryName)
+
+            findNavController().navigate(R.id.action_nav_home_to_nav_joke, bundle)
         }
     }
 
@@ -56,16 +60,16 @@ class HomeFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
-    fun showFailure(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
-    }
-
     fun showProgress() {
         progressBar.visibility = View.VISIBLE
     }
 
     fun hideProgress() {
         progressBar.visibility = View.GONE
+    }
+
+    fun showFailure(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
 }
 

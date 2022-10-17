@@ -8,7 +8,7 @@ import com.xwray.groupie.Item
 import edu.and.jokeapp.R
 import edu.and.jokeapp.model.Category
 
-class CategoryItem(private val category: Category) : Item<CategoryItem.CategoryViewHolder>() {
+class CategoryItem(val category: Category) : Item<CategoryItem.CategoryViewHolder>() {
     class CategoryViewHolder(view:View) : GroupieViewHolder(view)
 
     override fun createViewHolder(itemView: View) = CategoryViewHolder(itemView)
@@ -18,8 +18,5 @@ class CategoryItem(private val category: Category) : Item<CategoryItem.CategoryV
         viewHolder.itemView.findViewById<LinearLayout>(R.id.container_category).setBackgroundColor(category.bgColor.toInt())
 
     }
-
     override fun getLayout() = R.layout.item_category
-
-
 }
